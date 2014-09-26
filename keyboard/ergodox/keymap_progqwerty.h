@@ -69,7 +69,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FN6,    F13,    F14,    F15,    F16,    F17,    TRNS,
         TRNS,   WH_L,   MS_U,   WL_R,   WL_U,   BTN4,   TAB,
         TRNS,   MS_L,   MS_D,   MS_R,   WL_D,   BTN5,
-        TRNS,   BTN1,   BTN3,   BTN2,   BTN1,   F18,    BKSP,
+        TRNS,   BTN1,   BTN3,   BTN2,   BTN1,   F18,    BSPC,
         TRNS,   PSCR,   PAUS,   FN7,    FN8,
                                                         TRNS,   TRNS,
                                                                 TRNS,
@@ -139,7 +139,7 @@ enum function_id {
  * Fn action definition
  */
 static const uint16_t PROGMEM fn_actions[] = {
-    ACTION_LAYER_MOMENTARY(1),                      // FN0 - push Layer1
+    ACTION_LAYER_TAP_KEY(1, KC_BSLS),                      // FN0 - push Layer1
     ACTION_DEFAULT_LAYER_SET(1),                    // FN1 - switch to Layer1
     
     ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),             // FN2 - shifted to {
