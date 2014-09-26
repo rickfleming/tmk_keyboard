@@ -23,23 +23,23 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP(  // layout: layer 0: default
         // left hand
-        GRV,	1,		2,		3,		4,		5,		ESC,
-        HOME,	Q,		W,		E,		R,		T,		FN2,
-        END,	A,		S,		D,		F,		G,
-        LSFT,	Z,		X,		C,		V,		B,		COMM,
-        MUTE,	LBRC,	FN3,	FN0,	FN1,
-														VOLD,	LGUI,
-																LCTL,
-												BSPC,	TAB,	LALT,
+        GRV,    1,      2,      3,      4,      5,      ESC,
+        HOME,   Q,      W,      E,      R,      T,      FN2,
+        END,    A,      S,      D,      F,      G,
+        LSFT,   Z,      X,      C,      V,      B,      COMM,
+        MUTE,   LBRC,   FN3,    FN0,    FN1,
+                                                        VOLD,   LGUI,
+                                                                LCTL,
+                                                BSPC,   TAB,    LALT,
         // right hand
-				EQL,	6,		7,		8,		9,		0,		MINS,
-				FN4,	Y,		U,		I,		O,		P,		PGUP,
-						H,		J,		K,		L,		SLSH,	PGDN,
-				DOT,	N,		M,		QUOT,	SCLN,	UP,		RSFT,
-								RBRC,	FN5,	LEFT,	DOWN,	RGHT,
-        RGUI,	VOLU,
+                EQL,    6,      7,      8,      9,      0,      MINS,
+                FN4,    Y,      U,      I,      O,      P,      PGUP,
+                        H,      J,      K,      L,      SLSH,   PGDN,
+                DOT,    N,      M,      QUOT,   SCLN,   UP,     RSFT,
+                                RBRC,   FN5,    LEFT,   DOWN,   RGHT,
+        RGUI,   VOLU,
         RALT,
-        RCTL,	ENT,	SPC
+        RCTL,   ENT,    SPC
     ),
 
     /* Keymap 1: Function/Keypad/Mouse/Debug
@@ -62,27 +62,27 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                 |  F8  |  F10 |------|       |------|  F9  |  F11 |
      *                                 |      |      | TRNS |       | TRNS |      |      |
      *                                 `--------------------'       `--------------------'
-     */	
-	
+     */ 
+    
     KEYMAP(  // layout: layer 1: F-keys instead of numbers
         // left hand
-        FN6,	F13,	F14,	F15,	F16,	F17,	TRNS,
-        TRNS,	WH_L,	MS_U,	WL_R,	WL_U,	BTN4,	TAB,
-        TRNS,	MS_L,	MS_D,	MS_R,	WL_D,	BTN5,
-        TRNS,	BTN1,	BTN3,	BTN2,	BTN1,	F18,	BKSP,
-        TRNS,	PSCR,	PAUS,	FN7,	FN8,
-														TRNS,	TRNS,
-																TRNS,
-												F8,		F10,	TRNS,
+        FN6,    F13,    F14,    F15,    F16,    F17,    TRNS,
+        TRNS,   WH_L,   MS_U,   WL_R,   WL_U,   BTN4,   TAB,
+        TRNS,   MS_L,   MS_D,   MS_R,   WL_D,   BTN5,
+        TRNS,   BTN1,   BTN3,   BTN2,   BTN1,   F18,    BKSP,
+        TRNS,   PSCR,   PAUS,   FN7,    FN8,
+                                                        TRNS,   TRNS,
+                                                                TRNS,
+                                                F8,     F10,    TRNS,
         // right hand
-				F1,		F2,		F3,		F4,		F5,		F6,		F7,
-				SPC,	F12,	P7,		P8,		P9,		PMNS,	TRNS,
-						PSLS,	P4,		P5,		P6,		PPLS,	TRNS,
-				ENT,	PAST,	P1,		P2,		P3,		TRNS,	TRNS,
-								P0,		PDOT,	TRNS,	TRNS,	TRNS,
-        TRNS,	TRNS,
+                F1,     F2,     F3,     F4,     F5,     F6,     F7,
+                SPC,    F12,    P7,     P8,     P9,     PMNS,   TRNS,
+                        PSLS,   P4,     P5,     P6,     PPLS,   TRNS,
+                ENT,    PAST,   P1,     P2,     P3,     TRNS,   TRNS,
+                                P0,     PDOT,   TRNS,   TRNS,   TRNS,
+        TRNS,   TRNS,
         TRNS,
-        TRNS,	F9,		F11
+        TRNS,   F9,     F11
     ),
 
 /*
@@ -139,20 +139,20 @@ enum function_id {
  * Fn action definition
  */
 static const uint16_t PROGMEM fn_actions[] = {
-	ACTION_LAYER_MOMENTARY(1),						// FN0 - push Layer1
-	ACTION_DEFAULT_LAYER_SET(1),					// FN1 - switch to Layer1
-	
-	ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),				// FN2 - shifted to {
-	ACTION_MODS_KEY(MOD_LSFT, KC_COMM),				// FN3 - shifted to <
-	ACTION_MODS_KEY(MOD_LSFT, KC_RBRC),				// FN4 - shifted to }
-	ACTION_MODS_KEY(MOD_LSFT, KC_DOT),				// FN5 - shifted to >
-	
-	//**************************************************************************
-	
-	ACTION_FUNCTION(TEENSY_KEY),                    // FN6 - Teensy key
-	ACTION_DEFAULT_LAYER_SET(0),					// FN7 - switch to Layer0
-	ACTION_LAYER_MOMENTARY(0),						// FN8 - push Layer0
-	    
+    ACTION_LAYER_MOMENTARY(1),                      // FN0 - push Layer1
+    ACTION_DEFAULT_LAYER_SET(1),                    // FN1 - switch to Layer1
+    
+    ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),             // FN2 - shifted to {
+    ACTION_MODS_KEY(MOD_LSFT, KC_COMM),             // FN3 - shifted to <
+    ACTION_MODS_KEY(MOD_LSFT, KC_RBRC),             // FN4 - shifted to }
+    ACTION_MODS_KEY(MOD_LSFT, KC_DOT),              // FN5 - shifted to >
+    
+    //**************************************************************************
+    
+    ACTION_FUNCTION(TEENSY_KEY),                    // FN6 - Teensy key
+    ACTION_DEFAULT_LAYER_SET(0),                    // FN7 - switch to Layer0
+    ACTION_LAYER_MOMENTARY(0),                      // FN8 - push Layer0
+        
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
