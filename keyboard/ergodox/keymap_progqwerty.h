@@ -67,8 +67,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // layout: layer 1: F-keys instead of numbers
         // left hand
         FN6,    F13,    F14,    F15,    F16,    F17,    TRNS,
-        TRNS,   WH_L,   MS_U,   WL_R,   WL_U,   BTN4,   TAB,
-        TRNS,   MS_L,   MS_D,   MS_R,   WL_D,   BTN5,
+        TRNS,   WH_L,   MS_U,   WH_R,   WH_U,   BTN4,   TAB,
+        TRNS,   MS_L,   MS_D,   MS_R,   WH_D,   BTN5,
         TRNS,   BTN1,   BTN3,   BTN2,   BTN1,   F18,    BSPC,
         TRNS,   PSCR,   PAUS,   FN7,    FN8,
                                                         TRNS,   TRNS,
