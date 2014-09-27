@@ -135,6 +135,8 @@ enum function_id {
     TEENSY_KEY,
 };
 
+#define TAPPING_TOGGLE 2
+
 /*
  * Fn action definition
  */
