@@ -10,7 +10,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|   ,  |           |   .  |------+------+------+------+------+--------|
      * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   '  |   ;  |  UP  | RShift |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | Mute |   [  |   <  |  FN0 |  FN1 |                                       |   ]  |  >   | LEFT | DOWN | RIGHT|
+     *   | Mute |   [  |   <  |  \	 |  FN0 |                                       |   ]  |  >   | LEFT | DOWN | RIGHT|
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | VOL- | LGUI |       | RGUI | VOL+ |
@@ -24,19 +24,19 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // layout: layer 0: default
         // left hand
         GRV,    1,      2,      3,      4,      5,      ESC,
-        HOME,   Q,      W,      E,      R,      T,      FN2,
+        HOME,   Q,      W,      E,      R,      T,      FN1,
         END,    A,      S,      D,      F,      G,
         LSFT,   Z,      X,      C,      V,      B,      COMM,
-        MUTE,   LBRC,   FN3,    FN0,    FN1,
+        MUTE,   LBRC,   FN2,    \,    FN0,
                                                         VOLD,   LGUI,
                                                                 LCTL,
                                                 BSPC,   TAB,    LALT,
         // right hand
                 EQL,    6,      7,      8,      9,      0,      MINS,
-                FN4,    Y,      U,      I,      O,      P,      PGUP,
+                FN3,    Y,      U,      I,      O,      P,      PGUP,
                         H,      J,      K,      L,      SLSH,   PGDN,
                 DOT,    N,      M,      QUOT,   SCLN,   UP,     RSFT,
-                                RBRC,   FN5,    LEFT,   DOWN,   RGHT,
+                                RBRC,   FN4,    LEFT,   DOWN,   RGHT,
         RGUI,   VOLU,
         RALT,
         RCTL,   ENT,    SPC
@@ -45,7 +45,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Keymap 1: Function/Keypad/Mouse/Debug
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |   FN6  |  F13 |  F14 |  F15 |  F16 |  F17 | TRNS |           |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   F7   |
+     * |   FN5  |  F13 |  F14 |  F15 |  F16 |  F17 | TRNS |           |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   F7   |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |  TRNS  | WH_L | MS_U | WL_R | WL_U | BTN4 |  Tab |           | SPACE|  F12 |  KP7 |  KP8 |  KP9 |   -  |  TRNS  |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -53,7 +53,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| BkSp |           | ENTER|------+------+------+------+------+--------|
      * |  TRNS  | BTN1 | BTN3 | BTN2 | BTN1 |  F18 |      |           |      |   *  |  KP1 |  KP2 |  KP3 | TRNS |  TRNS  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | TRNS | PRTSC| PAUSE|  FN7 |  FN8 |                                       |  KP0 |  PDOT| TRNS | TRNS | TRNS |
+     *   | TRNS | PRTSC| PAUSE|  NO  | TRNS |                                       |  KP0 |  PDOT| TRNS | TRNS | TRNS |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | TRNS | TRNS |       | TRNS | TRNS |
@@ -66,11 +66,11 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     
     KEYMAP(  // layout: layer 1: F-keys instead of numbers
         // left hand
-        FN6,    F13,    F14,    F15,    F16,    F17,    TRNS,
+        FN5,    F13,    F14,    F15,    F16,    F17,    TRNS,
         TRNS,   WH_L,   MS_U,   WH_R,   WH_U,   BTN4,   TAB,
         TRNS,   MS_L,   MS_D,   MS_R,   WH_D,   BTN5,
         TRNS,   BTN1,   BTN3,   BTN2,   BTN1,   F18,    BSPC,
-        TRNS,   PSCR,   PAUS,   FN7,    FN8,
+        TRNS,   PSCR,   PAUS,   NO,     TRNS,
                                                         TRNS,   TRNS,
                                                                 TRNS,
                                                 F8,     F10,    TRNS,
@@ -139,20 +139,16 @@ enum function_id {
  * Fn action definition
  */
 static const uint16_t PROGMEM fn_actions[] = {
-    ACTION_LAYER_TAP_KEY(1, KC_BSLS),                      // FN0 - push Layer1
-    ACTION_DEFAULT_LAYER_SET(1),                    // FN1 - switch to Layer1
+    ACTION_LAYER_TAP_TOGGLE(1),                      // FN0 - push/toggle Layer1
     
-    ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),             // FN2 - shifted to {
-    ACTION_MODS_KEY(MOD_LSFT, KC_COMM),             // FN3 - shifted to <
-    ACTION_MODS_KEY(MOD_LSFT, KC_RBRC),             // FN4 - shifted to }
-    ACTION_MODS_KEY(MOD_LSFT, KC_DOT),              // FN5 - shifted to >
+    ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),             // FN1 - shifted to {
+    ACTION_MODS_KEY(MOD_LSFT, KC_COMM),             // FN2 - shifted to <
+    ACTION_MODS_KEY(MOD_LSFT, KC_RBRC),             // FN3 - shifted to }
+    ACTION_MODS_KEY(MOD_LSFT, KC_DOT),              // FN4 - shifted to >
     
     //**************************************************************************
     
-    ACTION_FUNCTION(TEENSY_KEY),                    // FN6 - Teensy key
-    ACTION_DEFAULT_LAYER_SET(0),                    // FN7 - switch to Layer0
-    ACTION_LAYER_MOMENTARY(0),                      // FN8 - push Layer0
-        
+    ACTION_FUNCTION(TEENSY_KEY),                    // FN5 - Teensy key
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
