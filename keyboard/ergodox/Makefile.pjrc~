@@ -114,6 +114,3 @@ cub: all
 
 progqwerty: OPT_DEFS += -DKEYMAP_PROGQWERTY
 progqwerty: all
-
-prog: OPT_DEFS += -DKEYMAP_PROG
-prog: all

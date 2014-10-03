@@ -143,7 +143,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *   | TRNS | TRNS | TRNS | TRNS | TRNS |                                       | TRNS | TRNS | TRNS | TRNS | TRNS |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
-     *                                        | {L0} | TRNS |       | FN19 | TRNS |
+     *                                        | {L0} | TRNS |       | TRNS | TRNS |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      | TRNS |       | TRNS |      |      |
      *                                 | TRNS | TRNS |------|       |------| TRNS | TRNS |
@@ -154,7 +154,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         TRNS,	F1,		F2,		F3,		F4,		F5,		F6,
         TRNS,	TRNS,	TRNS,	TRNS,   TRNS,   TRNS,   FN1,
-        FN3,	TRNS,	TRNS,	TRNS,   TRNS,   TRNS,
+        FN19,	TRNS,	TRNS,	TRNS,   TRNS,   TRNS,
         TRNS,	TRNS,	TRNS,	TRNS,   TRNS,   TRNS,   FN2,
         TRNS,	TRNS,	TRNS,	TRNS,   TRNS,
                                                         FN0,    TRNS,
@@ -166,7 +166,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         TRNS,   TRNS,   TRNS,   TRNS,   TRNS,   TRNS,
                 TRNS,   TRNS,   TRNS,   TRNS,   TRNS,   TRNS,   TRNS,
                                 TRNS,   TRNS,   TRNS,   TRNS,   TRNS,
-        FN19,   TRNS,
+        TRNS,   TRNS,
         TRNS,
         TRNS,   TRNS,	TRNS
     ),
@@ -278,7 +278,7 @@ static const uint16_t PROGMEM fn_actions[] = {
 	ACTION_DEFAULT_LAYER_SET(2),						// FN2 - default layer 2 (workman programmer)
 
 	ACTION_LAYER_TAP_KEY(3, KC_FN4),				// FN3 - momentary layer 3 (fn-keys)
-	ACTION_LAYER_TOGGLE(3),							// FN4 - invert layer 3 (fn-keys)
+	ACTION_LAYER_INVERT(3),							// FN4 - invert layer 3 (fn-keys)
 
 	ACTION_MODS_KEY(MOD_LALT, KC_ENT),             // FN5 - ALT+Enter
 	
